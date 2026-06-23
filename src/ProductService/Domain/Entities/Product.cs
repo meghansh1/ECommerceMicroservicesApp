@@ -13,4 +13,12 @@ public class Product
     public int StockQuantity { get; set; }
 
     public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+    
+    public Guid CategoryId { get; set; }
+
+    public string SKU { get; set; } = string.Empty;
+
+    public bool IsActive { get; set; } = true;
+
+    public DateTime UpdatedDate { get; set; }
 }
