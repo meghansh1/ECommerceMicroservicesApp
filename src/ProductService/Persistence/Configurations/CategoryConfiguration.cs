@@ -18,6 +18,9 @@ public class CategoryConfiguration :
                .HasMaxLength(200)
                .IsRequired();
 
+        builder.HasIndex(x => x.Name)
+       .IsUnique();
+
         builder.Property(x => x.Description)
                .HasMaxLength(1000);
     }

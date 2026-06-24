@@ -28,6 +28,9 @@ public class ProductConfiguration :
                .HasMaxLength(100)
                .IsRequired();
 
+        builder.HasIndex(x => x.SKU)
+       .IsUnique();
+
         builder.HasOne(x => x.Category)
                .WithMany(x => x.Products)
                .HasForeignKey(x => x.CategoryId);
