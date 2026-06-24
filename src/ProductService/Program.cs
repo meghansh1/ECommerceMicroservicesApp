@@ -1,6 +1,7 @@
 using ProductService.Repositories;
 using ProductService.Services;
-
+using Microsoft.EntityFrameworkCore;
+using ProductService.Persistence;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,6 +13,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IProductRepository, ProductRepository>();
 
 builder.Services.AddScoped<IProductService, ProductServiceManager>();
+builder.Services.AddDbContext<ProductDbContext>(options =>
+{
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("ProductDb"));
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
